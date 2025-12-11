@@ -9,5 +9,20 @@ package pasticceria;
  * @author zxt02
  */
 public class Materiale {
+    private String nome;
+    private int costo, qualita;
     
+    public Materiale(String n, int c,int q){
+        this.nome = n;
+        this.costo = c;
+        this.qualita = q;
+    }
+    
+    public int getCosto(){
+        return costo;
+    }
+    
+    public int getQualita(){
+        return qualita;
+    }
 }

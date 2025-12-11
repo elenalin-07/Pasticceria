@@ -11,5 +11,15 @@ import java.util.ArrayList;
  * @author zxt02
  */
 public class Dessert {
-    protected ArrayList<Materiale> materiali;
+    protected ArrayList<Materiale> materiali = new ArrayList<>();
+    protected int qualita;
+    
+    public void aggiungiMateriale(Materiale m){
+        materiali.add(m);
+        qualita += m.getQualita();
+    }
+    
+    public Dessert getDessert(){
+        return this;
+    }
 }

@@ -11,8 +11,9 @@ package pasticceria;
 public class Pasticcere {
     private int livello = 0, puntiEsperienza = 0, maxPunti;
     private String nome;
+    private Dessert dessert;
     
-    public Pasticcere(String n){
+    public Pasticcere(String n, Dessert dessert){
         this.nome = n;
     }
     
@@ -31,5 +32,9 @@ public class Pasticcere {
             puntiEsperienza -= maxPunti;
             aumentaLevel();
         }
+    }
+    
+    public void setDessrt(){
+        
     }
 }

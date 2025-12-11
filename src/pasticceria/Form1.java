@@ -127,7 +127,7 @@ public class Form1 extends javax.swing.JFrame {
         btnAggiungi.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnAggiungi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnIntroduzione.setBackground(new java.awt.Color(153, 255, 0));
+        btnIntroduzione.setBackground(new java.awt.Color(51, 204, 0));
         btnIntroduzione.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnIntroduzione.setForeground(new java.awt.Color(255, 255, 255));
         btnIntroduzione.setText("Introduzione");
