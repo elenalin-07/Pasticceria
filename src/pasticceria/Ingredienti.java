@@ -8,16 +8,20 @@ package pasticceria;
  *
  * @author zxt02
  */
-public class Materiale {
+public class Ingredienti {
     private String nome;
     private int costo, qualita;
     
-    public Materiale(String n, int c,int q){
+    public Ingredienti(String n, int c,int q){
         this.nome = n;
         this.costo = c;
         this.qualita = q;
     }
     
+    public void incremento(){
+        costo += costo * 20/100;
+    }
+        
     public int getCosto(){
         return costo;
     }

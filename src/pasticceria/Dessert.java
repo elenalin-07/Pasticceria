@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author zxt02
  */
 public class Dessert {
-    protected ArrayList<Materiale> materiali = new ArrayList<>();
+    protected ArrayList<Ingredienti> ingredienti = new ArrayList<>();
     protected int qualita, costoProduzione, prezzo, popolarita, quantita;
     private boolean stato;
     
@@ -20,14 +20,15 @@ public class Dessert {
         quantita = 20;
     }
     
-    public void aggiungiMateriale(Materiale m){
-        materiali.add(m);
-        qualita += m.getQualita();
+    public void aggiungiMateriale(Ingredienti i){
+        ingredienti.add(i);
+        qualita += i.getQualita();
     }
     
     public void vendita(){
         quantita--;
     }
+    
     public Dessert getDessert(){
         return this;
     }
