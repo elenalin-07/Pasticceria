@@ -9,4 +9,7 @@ package pasticceria;
  * @author zxt02
  */
 public class Torta extends Dessert{
+    public Torta(){
+        costoProduzione += 50;
+    }
 }

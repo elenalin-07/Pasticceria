@@ -9,5 +9,7 @@ package pasticceria;
  * @author zxt02
  */
 public class Donut extends Dessert{
-    
+    public Donut(){
+        costoProduzione += 30;
+    }
 }

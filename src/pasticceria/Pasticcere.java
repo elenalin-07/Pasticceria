@@ -15,6 +15,7 @@ public class Pasticcere {
     
     public Pasticcere(String n, Dessert dessert){
         this.nome = n;
+        this.dessert = dessert;
     }
     
     public void aumentaEsperienza(){
@@ -34,7 +35,4 @@ public class Pasticcere {
         }
     }
     
-    public void setDessrt(){
-        
-    }
 }

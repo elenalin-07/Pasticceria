@@ -9,5 +9,7 @@ package pasticceria;
  * @author zxt02
  */
 public class Gelato extends Dessert{
-    
+    public Gelato(){
+        costoProduzione += 15;
+    }
 }
