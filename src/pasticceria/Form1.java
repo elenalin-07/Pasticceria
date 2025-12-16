@@ -84,6 +84,7 @@ public class Form1 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        lblPasticcere = new javax.swing.JLabel();
         pnlR1 = new javax.swing.JPanel();
         lblR1L = new javax.swing.JLabel();
         lblR1P = new javax.swing.JLabel();
@@ -150,8 +151,11 @@ public class Form1 extends javax.swing.JFrame {
         lblQuantitaS2 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        lblProdotto3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        lblProdotto1 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        lblProdotto2 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1000, 600));
         setSize(new java.awt.Dimension(1000, 600));
@@ -405,15 +409,26 @@ public class Form1 extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 255)));
 
+        lblPasticcere.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPasticcere.setMaximumSize(new java.awt.Dimension(88, 88));
+        lblPasticcere.setMinimumSize(new java.awt.Dimension(88, 88));
+        lblPasticcere.setPreferredSize(new java.awt.Dimension(88, 88));
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblPasticcere, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblPasticcere, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlR1.setBackground(new java.awt.Color(255, 255, 255));
@@ -438,9 +453,9 @@ public class Form1 extends javax.swing.JFrame {
         lblR1Prezzo.setMinimumSize(new java.awt.Dimension(10, 10));
 
         lblImmagineR1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImmagineR1.setMaximumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR1.setMinimumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR1.setPreferredSize(new java.awt.Dimension(70, 66));
+        lblImmagineR1.setMaximumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR1.setMinimumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR1.setPreferredSize(new java.awt.Dimension(70, 70));
 
         btnEliminaR1.setBackground(new java.awt.Color(255, 204, 204));
         btnEliminaR1.setFont(new java.awt.Font("Arial", 0, 8)); // NOI18N
@@ -484,17 +499,16 @@ public class Form1 extends javax.swing.JFrame {
                                         .addComponent(lblR1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 3, Short.MAX_VALUE))))
                     .addGroup(pnlR1Layout.createSequentialGroup()
-                        .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlR1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(lblImmagineR1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlR1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblR1CP)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblR1CProduzione, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(lblR1CP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblR1CProduzione, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlR1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lblImmagineR1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlR1Layout.setVerticalGroup(
             pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -513,9 +527,9 @@ public class Form1 extends javax.swing.JFrame {
                 .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblR1CP)
                     .addComponent(lblR1CProduzione, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblImmagineR1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(lblImmagineR1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminaR1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAggiungiR1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -547,9 +561,9 @@ public class Form1 extends javax.swing.JFrame {
         lblR2Level.setMinimumSize(new java.awt.Dimension(10, 10));
 
         lblImmagineR2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImmagineR2.setMaximumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR2.setMinimumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR2.setPreferredSize(new java.awt.Dimension(70, 66));
+        lblImmagineR2.setMaximumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR2.setMinimumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR2.setPreferredSize(new java.awt.Dimension(70, 70));
 
         btnEliminaR2.setBackground(new java.awt.Color(255, 204, 204));
         btnEliminaR2.setFont(new java.awt.Font("Arial", 0, 8)); // NOI18N
@@ -570,10 +584,6 @@ public class Form1 extends javax.swing.JFrame {
         pnlR2.setLayout(pnlR2Layout);
         pnlR2Layout.setHorizontalGroup(
             pnlR2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlR2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblImmagineR2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
             .addGroup(pnlR2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlR2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -600,6 +610,10 @@ public class Form1 extends javax.swing.JFrame {
                                 .addComponent(lblR1CProduzione1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 3, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlR2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(lblImmagineR2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlR2Layout.setVerticalGroup(
             pnlR2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -617,9 +631,9 @@ public class Form1 extends javax.swing.JFrame {
                 .addGroup(pnlR2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblR1CP1)
                     .addComponent(lblR1CProduzione1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(lblImmagineR2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblImmagineR2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlR2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminaR2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAggiungiR2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -659,9 +673,9 @@ public class Form1 extends javax.swing.JFrame {
         btnAggiungiR3.setText("Aggiungi");
 
         lblImmagineR3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImmagineR3.setMaximumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR3.setMinimumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR3.setPreferredSize(new java.awt.Dimension(70, 66));
+        lblImmagineR3.setMaximumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR3.setMinimumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR3.setPreferredSize(new java.awt.Dimension(70, 70));
 
         lblR1CProduzione2.setFont(new java.awt.Font("Arial", 0, 8)); // NOI18N
         lblR1CProduzione2.setMaximumSize(new java.awt.Dimension(10, 10));
@@ -674,10 +688,6 @@ public class Form1 extends javax.swing.JFrame {
         pnlR3.setLayout(pnlR3Layout);
         pnlR3Layout.setHorizontalGroup(
             pnlR3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlR3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblImmagineR3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
             .addGroup(pnlR3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlR3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -704,6 +714,10 @@ public class Form1 extends javax.swing.JFrame {
                                 .addComponent(lblR1CProduzione2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 3, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlR3Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lblImmagineR3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlR3Layout.setVerticalGroup(
             pnlR3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -722,8 +736,8 @@ public class Form1 extends javax.swing.JFrame {
                     .addComponent(lblR1CP2)
                     .addComponent(lblR1CProduzione2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblImmagineR3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(lblImmagineR3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlR3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminaR3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAggiungiR3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -759,9 +773,9 @@ public class Form1 extends javax.swing.JFrame {
         btnEliminaR4.setText("Elimina");
 
         lblImmagineR4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImmagineR4.setMaximumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR4.setMinimumSize(new java.awt.Dimension(70, 66));
-        lblImmagineR4.setPreferredSize(new java.awt.Dimension(70, 66));
+        lblImmagineR4.setMaximumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR4.setMinimumSize(new java.awt.Dimension(70, 70));
+        lblImmagineR4.setPreferredSize(new java.awt.Dimension(70, 70));
 
         btnAggiungiR4.setBackground(new java.awt.Color(204, 255, 204));
         btnAggiungiR4.setFont(new java.awt.Font("Arial", 0, 8)); // NOI18N
@@ -800,17 +814,16 @@ public class Form1 extends javax.swing.JFrame {
                                     .addComponent(lblR4Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 3, Short.MAX_VALUE))))
                     .addGroup(pnlR4Layout.createSequentialGroup()
-                        .addGroup(pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlR4Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(lblImmagineR4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlR4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblR1CP3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblR1CProduzione3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap()
+                        .addComponent(lblR1CP3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblR1CProduzione3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pnlR4Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(lblImmagineR4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlR4Layout.setVerticalGroup(
             pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -828,9 +841,9 @@ public class Form1 extends javax.swing.JFrame {
                 .addGroup(pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblR1CP3)
                     .addComponent(lblR1CProduzione3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addComponent(lblImmagineR4, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblImmagineR4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEliminaR4, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAggiungiR4, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -845,9 +858,9 @@ public class Form1 extends javax.swing.JFrame {
         jPanel2.setPreferredSize(new java.awt.Dimension(180, 166));
 
         lblImmagineS1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImmagineS1.setMaximumSize(new java.awt.Dimension(70, 66));
-        lblImmagineS1.setMinimumSize(new java.awt.Dimension(70, 66));
-        lblImmagineS1.setPreferredSize(new java.awt.Dimension(70, 66));
+        lblImmagineS1.setMaximumSize(new java.awt.Dimension(95, 95));
+        lblImmagineS1.setMinimumSize(new java.awt.Dimension(95, 95));
+        lblImmagineS1.setPreferredSize(new java.awt.Dimension(95, 95));
 
         btnEliminaS1.setBackground(new java.awt.Color(204, 204, 255));
         btnEliminaS1.setFont(new java.awt.Font("Arial", 0, 8)); // NOI18N
@@ -891,8 +904,8 @@ public class Form1 extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(btnEliminaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 33, Short.MAX_VALUE)))
+                            .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 35, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -901,7 +914,7 @@ public class Form1 extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPrezzoS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -911,7 +924,7 @@ public class Form1 extends javax.swing.JFrame {
                         .addComponent(lblQuantitaS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -919,9 +932,9 @@ public class Form1 extends javax.swing.JFrame {
         jPanel3.setPreferredSize(new java.awt.Dimension(180, 166));
 
         lblImmagineS3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImmagineS3.setMaximumSize(new java.awt.Dimension(70, 66));
-        lblImmagineS3.setMinimumSize(new java.awt.Dimension(70, 66));
-        lblImmagineS3.setPreferredSize(new java.awt.Dimension(70, 66));
+        lblImmagineS3.setMaximumSize(new java.awt.Dimension(95, 95));
+        lblImmagineS3.setMinimumSize(new java.awt.Dimension(95, 95));
+        lblImmagineS3.setPreferredSize(new java.awt.Dimension(95, 95));
 
         jLabel21.setFont(new java.awt.Font("Arial", 0, 8)); // NOI18N
         jLabel21.setText("Prezzo");
@@ -951,8 +964,8 @@ public class Form1 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addComponent(lblImmagineS3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addComponent(lblImmagineS3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(45, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -974,7 +987,7 @@ public class Form1 extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(lblImmagineS3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblImmagineS3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -993,9 +1006,9 @@ public class Form1 extends javax.swing.JFrame {
         jPanel5.setPreferredSize(new java.awt.Dimension(180, 166));
 
         lblImmagineS2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImmagineS2.setMaximumSize(new java.awt.Dimension(70, 66));
-        lblImmagineS2.setMinimumSize(new java.awt.Dimension(70, 66));
-        lblImmagineS2.setPreferredSize(new java.awt.Dimension(70, 66));
+        lblImmagineS2.setMaximumSize(new java.awt.Dimension(95, 95));
+        lblImmagineS2.setMinimumSize(new java.awt.Dimension(95, 95));
+        lblImmagineS2.setPreferredSize(new java.awt.Dimension(95, 95));
 
         lblPrezzoS2.setFont(new java.awt.Font("Arial", 0, 8)); // NOI18N
         lblPrezzoS2.setMaximumSize(new java.awt.Dimension(17, 10));
@@ -1025,8 +1038,8 @@ public class Form1 extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(lblImmagineS2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addComponent(lblImmagineS2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1046,7 +1059,7 @@ public class Form1 extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(lblImmagineS2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblImmagineS2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1066,15 +1079,26 @@ public class Form1 extends javax.swing.JFrame {
         jPanel6.setMinimumSize(new java.awt.Dimension(152, 155));
         jPanel6.setPreferredSize(new java.awt.Dimension(152, 155));
 
+        lblProdotto3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProdotto3.setMaximumSize(new java.awt.Dimension(88, 88));
+        lblProdotto3.setMinimumSize(new java.awt.Dimension(88, 88));
+        lblProdotto3.setPreferredSize(new java.awt.Dimension(88, 88));
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblProdotto3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblProdotto3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -1083,15 +1107,26 @@ public class Form1 extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(152, 155));
         jPanel1.setPreferredSize(new java.awt.Dimension(152, 155));
 
+        lblProdotto1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProdotto1.setMaximumSize(new java.awt.Dimension(88, 88));
+        lblProdotto1.setMinimumSize(new java.awt.Dimension(88, 88));
+        lblProdotto1.setPreferredSize(new java.awt.Dimension(88, 88));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(lblProdotto1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(lblProdotto1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -1100,15 +1135,26 @@ public class Form1 extends javax.swing.JFrame {
         jPanel7.setMinimumSize(new java.awt.Dimension(152, 155));
         jPanel7.setPreferredSize(new java.awt.Dimension(152, 155));
 
+        lblProdotto2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProdotto2.setMaximumSize(new java.awt.Dimension(88, 88));
+        lblProdotto2.setMinimumSize(new java.awt.Dimension(88, 88));
+        lblProdotto2.setPreferredSize(new java.awt.Dimension(88, 88));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(32, Short.MAX_VALUE)
+                .addComponent(lblProdotto2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(lblProdotto2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout pnlBackgroundLayout = new javax.swing.GroupLayout(pnlBackground);
@@ -1291,9 +1337,13 @@ public class Form1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblImmagineS2;
     private javax.swing.JLabel lblImmagineS3;
     private javax.swing.JLabel lblMese;
+    private javax.swing.JLabel lblPasticcere;
     private javax.swing.JLabel lblPrezzoS1;
     private javax.swing.JLabel lblPrezzoS2;
     private javax.swing.JLabel lblPrezzoS4;
+    private javax.swing.JLabel lblProdotto1;
+    private javax.swing.JLabel lblProdotto2;
+    private javax.swing.JLabel lblProdotto3;
     private javax.swing.JLabel lblQuantitaS1;
     private javax.swing.JLabel lblQuantitaS2;
     private javax.swing.JLabel lblQuantitaS3;
