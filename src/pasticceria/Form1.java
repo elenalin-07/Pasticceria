@@ -5,6 +5,7 @@
 package pasticceria;
 
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +13,8 @@ import javax.swing.JOptionPane;
  * @author zxt02
  */
 public class Form1 extends javax.swing.JFrame {
-    private String qualita;
+    private int numProdotto = 0;
+    private String tipo, qualita, ingredient;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Form1.class.getName());
     
     public HashMap<String, Integer> ingredients;
@@ -20,6 +22,38 @@ public class Form1 extends javax.swing.JFrame {
     /**
      * Creates new form Form1
      */
+    
+    public String filePath(String i){
+        switch(i){
+            case "fragole":
+                return "/immagini/fragola.JPG";
+            case "farina":
+                return "/immagini/farina.jpg";
+            case "uova":
+                return "/immagini/uova.jpg";
+            case "cioccolato":
+                return "/immagini/cioccolato.jpg";
+            case "latte":
+                return "/immagini/latte.jpg";
+            case "cannella":
+                return "/immagini/cannella.JPG";
+            case "formaggio cremoso":
+                return "/immagini/formaggio cremoso.jpg";
+            case "liquore":
+                return "/immagini/liquore.jpg";
+            case "lievito":
+                return "/immagini/lievito.jpg";    
+            case "crema":
+                return "/immagini/crema.jpg";
+            case "latte condensato":
+                return "/immagini/latte condensato.JPG";   
+            case "vaniglia":
+                return "/immagini/cannella.JPG";
+            case "caffè":
+                return "/immagini/formaggio caffè.jpg";       
+        }
+        return "errore";
+    }
     public Form1() {
         initComponents();
         
@@ -198,6 +232,11 @@ public class Form1 extends javax.swing.JFrame {
         jButton1.setText("Creare");
         jButton1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnAggiungi.setBackground(new java.awt.Color(51, 153, 255));
         btnAggiungi.setFont(new java.awt.Font("Arial Black", 0, 10)); // NOI18N
@@ -205,6 +244,11 @@ public class Form1 extends javax.swing.JFrame {
         btnAggiungi.setText("Aggiungi");
         btnAggiungi.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         btnAggiungi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAggiungi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAggiungiActionPerformed(evt);
+            }
+        });
 
         btnIntroduzione.setBackground(new java.awt.Color(51, 204, 0));
         btnIntroduzione.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -477,33 +521,29 @@ public class Form1 extends javax.swing.JFrame {
         pnlR1Layout.setHorizontalGroup(
             pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlR1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlR1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(btnEliminaR1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAggiungiR1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addGroup(pnlR1Layout.createSequentialGroup()
                         .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlR1Layout.createSequentialGroup()
-                                .addComponent(btnEliminaR1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAggiungiR1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addComponent(lblR1L, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR1Level, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlR1Layout.createSequentialGroup()
-                                .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlR1Layout.createSequentialGroup()
-                                        .addComponent(lblR1L, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblR1Level, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(pnlR1Layout.createSequentialGroup()
-                                        .addComponent(lblR1P, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblR1Prezzo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblR1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 3, Short.MAX_VALUE))))
-                    .addGroup(pnlR1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblR1CP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblR1CProduzione, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(lblR1P, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR1Prezzo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR1Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlR1Layout.createSequentialGroup()
+                                .addComponent(lblR1CP)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR1CProduzione, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 3, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(pnlR1Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
@@ -793,14 +833,14 @@ public class Form1 extends javax.swing.JFrame {
         pnlR4Layout.setHorizontalGroup(
             pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlR4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlR4Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(btnEliminaR4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAggiungiR4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addGroup(pnlR4Layout.createSequentialGroup()
                         .addGroup(pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlR4Layout.createSequentialGroup()
-                                .addComponent(btnEliminaR4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAggiungiR4, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                             .addGroup(pnlR4Layout.createSequentialGroup()
                                 .addGroup(pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblR4L, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -811,14 +851,12 @@ public class Form1 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlR4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblR4Level, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblR4Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 3, Short.MAX_VALUE))))
-                    .addGroup(pnlR4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblR1CP3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblR1CProduzione3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(lblR4Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlR4Layout.createSequentialGroup()
+                                .addComponent(lblR1CP3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblR1CProduzione3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 3, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(pnlR4Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
@@ -1255,6 +1293,21 @@ public class Form1 extends javax.swing.JFrame {
     private void btnIstruzioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioneActionPerformed
          JOptionPane.showMessageDialog(null,"gfdgfdgfd","Title",1);
     }//GEN-LAST:event_btnIstruzioneActionPerformed
+
+    private void btnAggiungiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggiungiActionPerformed
+        tipo = cmbTipo.getSelectedItem().toString();
+        ingredient = cmbProdotto.getSelectedItem().toString();
+        numProdotto++;
+        if(numProdotto == 1) lblProdotto1.setIcon(new ImageIcon(filePath(ingredient)));
+        if(numProdotto == 2) lblProdotto2.setIcon(new ImageIcon(filePath(ingredient)));
+        else lblProdotto2.setIcon(new ImageIcon(filePath(ingredient)));
+        
+        
+    }//GEN-LAST:event_btnAggiungiActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        numProdotto = 0;
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

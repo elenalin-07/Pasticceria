@@ -80,7 +80,7 @@ public class Negozio {
                 quantita--;
                 spessa = quantita * prezzo;
             }
-            if(spessa > soldi){
+            /*if(spessa > soldi){
                 int max2 = 0;
                 for(Dessert dessert : vendite){
                     if(dessert.getPopolarita() > max2 && dessert.getPopolarita() < max 1;){
@@ -88,7 +88,7 @@ public class Negozio {
                         i++;
                     }
                 }
-            }
+            }*/
         }
     }
 }
