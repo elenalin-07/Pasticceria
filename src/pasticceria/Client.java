@@ -19,7 +19,6 @@ public class Client {
         soldi = r.nextInt(200, 3001);
     }
     
-    public void compra(Dessert d){
-        
+    public void compra(ArrayList<Dessert> d){
     }
 }

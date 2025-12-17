@@ -8,16 +8,19 @@ package pasticceria;
  *
  * @author zxt02
  */
-public class Ingredienti {
-    private String nome;
-    private int costo, qualita;
+public class Ingrediente {
+    private String nome, qualita;
+    private int costo;
     
-    public Ingredienti(String n, int c,int q){
+    public Ingrediente(String n, int c, String q){
         this.nome = n;
         this.costo = c;
         this.qualita = q;
     }
     
+    public String getNome(){
+        return nome;
+    }
     public void incremento(){
         costo += costo * 20/100;
     }
@@ -26,7 +29,7 @@ public class Ingredienti {
         return costo;
     }
     
-    public int getQualita(){
+    public String getQualita(){
         return qualita;
     }
 }

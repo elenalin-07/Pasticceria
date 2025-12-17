@@ -4,17 +4,22 @@
  */
 package pasticceria;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
  * @author zxt02
  */
-public class Form1 extends javax.swing.JFrame {
-    private int numProdotto = 0;
+public class Form1 extends javax.swing.JFrame{
+    private ArrayList<Ingrediente> i;
+    private int numProdotto, costo, clic, numDessert;
     private String tipo, qualita, ingredient;
+    private Dessert dessert;
+    private Negozio negozio;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Form1.class.getName());
     
     public HashMap<String, Integer> ingredients;
@@ -23,40 +28,104 @@ public class Form1 extends javax.swing.JFrame {
      * Creates new form Form1
      */
     
+    public String filePathDessert(){
+        switch(dessert.setImage()){
+            case "donut fragola":
+                return "/Immagini/Donut alla fragola.jpg";
+            case "donut cioccolato":
+                return "/Immagini/Donut al cioccolato.jpg"; 
+            case "donut latte":
+                return "/Immagini/Donut al latte.jpg";
+            case "donut crema":
+                return "/Immagini/Donut alla crema.jpg";
+            case "gelato fragola":
+                return "/Immagini/Gelato alla fragola.JPG";
+            case "gelato cioccolato":
+                return "/Immagini/Gelato al cioccolato.JPG"; 
+            case "gelato caffe":
+                return "/Immagini/Gelato al caffè.JPG";
+            case "gelato vaniglia":
+                return "/Immagini/Gelato alla vaniglia.JPG";  
+            case "torta fragola":
+                return "/Immagini/Torta alla fragola.JPG";
+            case "torta cioccolato":
+                return "/Immagini/Torta al cioccolato.JPG"; 
+            case "torta latte":
+                return "/Immagini/Torta al latte.JPG";
+            case "tiramisu":
+                return "/Immagini/Tiramisù.JPG"; 
+            case "Girella":
+                return "/Immagini/Girella alla cannella.JPG"; 
+        }
+        return "";
+    }
+    
+    public void set(){
+        tipo = cmbTipo.getSelectedItem().toString();
+        
+        lblProdotto1.setIcon(null);
+        lblProdotto2.setIcon(null);
+        lblProdotto3.setIcon(null);
+        
+        switch(tipo){
+            case "Donut":
+                dessert = new Donut();
+                break;
+            case "Torta":
+                dessert = new Torta();
+                break;
+            case "Gelato":
+                dessert = new Gelato();
+                break;
+        }
+    }
     public String filePath(String i){
-        switch(i){
-            case "fragole":
-                return "/immagini/fragola.JPG";
+            switch(i){
+            case "fragola":
+                return "/Immagini/fragola.JPG";
             case "farina":
-                return "/immagini/farina.jpg";
+                return "/Immagini/farina.jpg";
             case "uova":
-                return "/immagini/uova.jpg";
+                return "/Immagini/uova.jpg";
             case "cioccolato":
-                return "/immagini/cioccolato.jpg";
+                return "/Immagini/cioccolato.jpg";
             case "latte":
-                return "/immagini/latte.jpg";
+                return "/Immagini/latte.jpg";
             case "cannella":
-                return "/immagini/cannella.JPG";
+                return "/Immagini/cannella.JPG";
             case "formaggio cremoso":
-                return "/immagini/formaggio cremoso.jpg";
+                return "/Immagini/formaggio cremoso.jpg";
             case "liquore":
-                return "/immagini/liquore.jpg";
+                return "/Immagini/liquore.jpg";
             case "lievito":
-                return "/immagini/lievito.jpg";    
+                return "/Immagini/lievito.jpg";    
             case "crema":
-                return "/immagini/crema.jpg";
+                return "/Immagini/crema.jpg";
             case "latte condensato":
-                return "/immagini/latte condensato.JPG";   
+                return "/Immagini/latte condensato.JPG";   
             case "vaniglia":
-                return "/immagini/cannella.JPG";
+                return "/Immagini/cannella.JPG";
             case "caffè":
-                return "/immagini/formaggio caffè.jpg";       
+                return "/Immagini/caffè.jpg";   
+            case "cacao":
+                return "/Immagini/cacao.jpg";
         }
         return "errore";
     }
     public Form1() {
         initComponents();
         
+        UIManager.put("Panel.background", new java.awt.Color(232,249,255));
+        UIManager.put("OptionPane.background", new java.awt.Color(232,249,255));
+        
+        i = new ArrayList<>();
+        
+        tipo = cmbTipo.getSelectedItem().toString();
+        numProdotto = 0;
+        numDessert = 0;
+        
+        negozio = new Negozio();
+
         ingredients = new HashMap<String, Integer>();
         ingredients.put("fragola", 20);
         ingredients.put("farina", 8);
@@ -75,9 +144,6 @@ public class Form1 extends javax.swing.JFrame {
         ingredients.put("latte condensato", 10);
         ingredients.put("vaniglia", 15);
         ingredients.put("caffè", 30);
-         
-         ingredients.get("Fragola");
-         ingredients.get(cmbProdotto.getSelectedItem());
          
     }
 
@@ -209,6 +275,11 @@ public class Form1 extends javax.swing.JFrame {
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Donut", "Torta", "Gelato" }));
         cmbTipo.setToolTipText("");
         cmbTipo.setPreferredSize(new java.awt.Dimension(70, 22));
+        cmbTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 204, 255));
@@ -218,7 +289,7 @@ public class Form1 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(153, 255, 153));
         jLabel3.setText("Ingredienti");
 
-        cmbProdotto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "fragole", "farina", "uova", "cioccolato", "cacao", "latte", "cannella", "formaggio cremoso", "liquore", "lievito", "crema", "latte condensato", "vaniglia", "caffè" }));
+        cmbProdotto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "fragola", "farina", "uova", "cioccolato", "cacao", "latte", "cannella", "formaggio cremoso", "liquore", "lievito", "crema", "latte condensato", "vaniglia", "caffè" }));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 204, 204));
@@ -321,6 +392,11 @@ public class Form1 extends javax.swing.JFrame {
         btnRicette.setForeground(new java.awt.Color(255, 255, 255));
         btnRicette.setText("Ricette");
         btnRicette.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnRicette.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRicetteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
         pnlMenu.setLayout(pnlMenuLayout);
@@ -371,8 +447,8 @@ public class Form1 extends javax.swing.JFrame {
                                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbProdotto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbQualita, 0, 193, Short.MAX_VALUE)))
+                                    .addComponent(cmbProdotto, 0, 193, Short.MAX_VALUE)
+                                    .addComponent(cmbQualita, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(btnAggiungi, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuLayout.createSequentialGroup()
@@ -567,7 +643,7 @@ public class Form1 extends javax.swing.JFrame {
                 .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblR1CP)
                     .addComponent(lblR1CProduzione, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(lblImmagineR1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlR1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -927,39 +1003,36 @@ public class Form1 extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblPrezzoS1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnEliminaS1)
+                            .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 35, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPrezzoS1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblQuantitaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(btnEliminaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 35, Short.MAX_VALUE)))
+                        .addComponent(lblQuantitaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPrezzoS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)))
+                .addComponent(lblImmagineS1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(lblQuantitaS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)
-                        .addComponent(lblQuantitaS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblPrezzoS1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminaS1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1001,23 +1074,24 @@ public class Form1 extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(lblImmagineS3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(lblPrezzoS4, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPrezzoS4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblQuantitaS3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnEliminaS3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(lblImmagineS3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(btnEliminaS3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1026,7 +1100,7 @@ public class Form1 extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(lblImmagineS3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblPrezzoS4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1034,9 +1108,9 @@ public class Form1 extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel22)
                         .addComponent(lblQuantitaS3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(btnEliminaS3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
@@ -1082,23 +1156,25 @@ public class Form1 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPrezzoS2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblQuantitaS2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEliminaS2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnEliminaS2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblPrezzoS2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblQuantitaS2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblImmagineS2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblPrezzoS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1106,9 +1182,9 @@ public class Form1 extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
                         .addComponent(lblQuantitaS2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminaS2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -1203,41 +1279,36 @@ public class Form1 extends javax.swing.JFrame {
                 .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                        .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBackgroundLayout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(14, 14, 14))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
                     .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                        .addGroup(pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                                .addComponent(pnlR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlR3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pnlR4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlBackgroundLayout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(12, Short.MAX_VALUE))))
+                        .addComponent(pnlR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlR3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pnlR4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlBackgroundLayout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         pnlBackgroundLayout.setVerticalGroup(
             pnlBackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
             .addGroup(pnlBackgroundLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
                 .addComponent(jLabel6)
@@ -1270,11 +1341,11 @@ public class Form1 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 1060, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlBackground, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
         );
 
         pack();
@@ -1286,28 +1357,95 @@ public class Form1 extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbQualitaActionPerformed
 
     private void btnIntroduzioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIntroduzioneActionPerformed
-        JOptionPane.showMessageDialog(null,"gfdgfdgfd","Title",1);
+        JOptionPane.showMessageDialog(null,"Sei un impiegato stanco di ripetere ogni giorno le stesse attività alla scrivania. Finalmente, decidi di riscoprire il sogno della tua infanzia: aprire una pasticceria tutta tua. Anche se disponi di pochi fondi, "
+                + "                         \ncoraggiosamente contrai un prestito di 15.000 euro per realizzare il tuo sogno.\n" +
+                                            "\n" +
+                                            "Il tuo obiettivo è chiaro: entro un anno devi far crescere il capitale fino ad almeno 15.000 euro. Se al termine dell’anno non raggiungerai questo traguardo, la pasticceria sarà costretta a chiudere.","Introduzione",1);
 
     }//GEN-LAST:event_btnIntroduzioneActionPerformed
 
     private void btnIstruzioneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioneActionPerformed
-         JOptionPane.showMessageDialog(null,"gfdgfdgfd","Title",1);
+        JOptionPane.showMessageDialog(null,"Benvenuto!\n" +
+                                            "Area di lavoro a sinistra: controlla il tipo di dolce che vuoi preparare, gli ingredienti e le ricette.\n" +
+                                            "\n" +
+                                            "Aree a destra:\n" +
+                                            "- Dolce Creazione: prepara i dolci! La qualità degli ingredienti influisce sul risultato, scegli il pubblico e crea dolci di alta qualità.\n" +
+                                            "- Ricette: vedi tutti i dolci che hai preparato.\n" +
+                                            "- Stand: esponi i dolci (3 slot). Controlla la luce in alto a sinistra:\n" +
+                                            "         Rosso: poco popolare, meglio cambiare\n" +
+                                            "         Arancione: popolarità media, puoi cambiare o no\n" +
+                                            "         Verde: molto apprezzato\n" +
+                                            "\n" +
+                                            "Durante il gioco ci saranno eventi imprevisti, affrontali con attenzione!\n" +
+                                            "L’introduzione e gli obiettivi sono nel pulsante Introduzione, leggili attentamente!","Istruzione",1);
     }//GEN-LAST:event_btnIstruzioneActionPerformed
 
     private void btnAggiungiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAggiungiActionPerformed
-        tipo = cmbTipo.getSelectedItem().toString();
+        if(clic == 0) {
+            set();
+            clic++;
+        }
         ingredient = cmbProdotto.getSelectedItem().toString();
+        costo = ingredients.get(ingredient);
+        qualita = cmbQualita.getSelectedItem().toString();
+        
         numProdotto++;
-        if(numProdotto == 1) lblProdotto1.setIcon(new ImageIcon(filePath(ingredient)));
-        if(numProdotto == 2) lblProdotto2.setIcon(new ImageIcon(filePath(ingredient)));
-        else lblProdotto2.setIcon(new ImageIcon(filePath(ingredient)));
-        
-        
+                
+        dessert.addIngrediente(new Ingrediente(ingredient, costo, qualita), numProdotto);
+                
+        ImageIcon icon = new ImageIcon(getClass().getResource(filePath(ingredient)));
+        if(numProdotto == 1) {
+            lblProdotto1.setIcon(icon);
+        }
+        else if(numProdotto == 2) {
+            lblProdotto2.setIcon(icon);
+        }
+        else {
+            lblProdotto3.setIcon(icon);
+            numProdotto = 0;
+        }
     }//GEN-LAST:event_btnAggiungiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         numProdotto = 0;
+        if(numDessert < 5){
+            negozio.addDessert(dessert);
+            ImageIcon i = new ImageIcon(getClass().getResource(filePathDessert()));
+            lblImmagineR1.setIcon(i);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoActionPerformed
+        set();
+        clic++;
+    }//GEN-LAST:event_cmbTipoActionPerformed
+
+    private void btnRicetteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRicetteActionPerformed
+        switch(tipo){
+            case "Donut":
+                JOptionPane.showMessageDialog(null,"Consiglio: segui la ricetta passo dopo passo per evitare risultati fallimentari\n" +
+                                                   "\nDonut al latte: farina, lievito, latte\n" +
+                                                   "Donut alla fragola: farina, lievito, fragola\n" +
+                                                   "Donut al cioccolato: farina, lievito, cioccolato\n" +
+                                                   "Donut alla crema: farina, lievito, crema","Ricette - Donut",1);
+                break;
+            case "Torta":
+                JOptionPane.showMessageDialog(null,"Consiglio: segui la ricetta passo dopo passo per evitare risultati fallimentari\n" +
+                                                   "Torta alla fragola: fragola, farina, uova\n" +
+                                                   "Torta al cioccolato: cioccolato, farina, cacao\n" +
+                                                   "Torta al latte: uova, farina, latte\n" +
+                                                   "Girella alla cannella: cannella, farina, uova\n" +
+                                                   "Tiramisù: formaggio cremoso, cacao, liquore","Ricette - Torta",1);
+                break;
+            case "Gelato":
+                JOptionPane.showMessageDialog(null,"Consiglio: segui la ricetta passo dopo passo per evitare risultati fallimentari\n" +
+                                                   "Gelato alla vaniglia: panna, latte condensato, vaniglia\n" +
+                                                   "Gelato alla fragola: panna, latte condensato, fragola\n" +
+                                                   "Gelato al cioccolato: panna, latte condensato, cioccolato\n" +
+                                                   "Gelato al caffè: panna, latte condensato, chicchi di caffè","Ricette - Gelato",1);
+                break;
+        }
+    }//GEN-LAST:event_btnRicetteActionPerformed
 
     /**
      * @param args the command line arguments

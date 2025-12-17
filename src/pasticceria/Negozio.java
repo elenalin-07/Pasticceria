@@ -65,30 +65,6 @@ public class Negozio {
     }
     
     public void compra(){
-        int max = 0, i = 0;
-        for(Dessert dessert : vendite){
-            if(dessert.getPopolarita() > max){
-                max = dessert.getPopolarita();
-                i++;
-            }
-        }
-        int quantita = r.nextInt(1,4);
-        int prezzo = vendite.get(i).getPopolarita();
-        int spessa = quantita * prezzo;
-        if(spessa > soldi){
-            while(spessa > soldi && quantita >= 0){
-                quantita--;
-                spessa = quantita * prezzo;
-            }
-            /*if(spessa > soldi){
-                int max2 = 0;
-                for(Dessert dessert : vendite){
-                    if(dessert.getPopolarita() > max2 && dessert.getPopolarita() < max 1;){
-                        max = dessert.getPopolarita();
-                        i++;
-                    }
-                }
-            }*/
-        }
+
     }
 }

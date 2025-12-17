@@ -15,7 +15,7 @@ public class Pasticceria {
      */
     public static void main(String[] args) {
         Form1 f = new Form1();
-        f.setSize(1000, 600);
+        f.setSize(1100, 700);
         f.setVisible(true);
     }
     
