@@ -22,6 +22,33 @@ public class Gelato extends Dessert{
     
     public Gelato(){
         costoProduzione += 15;
+        
+        fragola = new ArrayList<>();
+        cioccolato = new ArrayList<>();
+        caffe = new ArrayList<>();
+        vaniglia = new ArrayList<>();
+        ricetteGelato = new ArrayList<>();
+        
+        fragola.add(new Ingrediente("panna", 0, ""));
+        fragola.add(new Ingrediente("latte condensato", 0, ""));
+        fragola.add(new Ingrediente("fragola", 0, ""));
+        
+        cioccolato.add(new Ingrediente("panna", 0, ""));
+        cioccolato.add(new Ingrediente("latte condensato", 0, ""));
+        cioccolato.add(new Ingrediente("cioccolato", 0, ""));
+        
+        caffe.add(new Ingrediente("panna", 0, ""));
+        caffe.add(new Ingrediente("latte condensato", 0, ""));
+        caffe.add(new Ingrediente("caffe", 0, ""));
+        
+        vaniglia.add(new Ingrediente("panna", 0, ""));
+        vaniglia.add(new Ingrediente("latte condensato", 0, ""));
+        vaniglia.add(new Ingrediente("vaniglia", 0, ""));
+        
+        ricetteGelato.add(fragola);
+        ricetteGelato.add(cioccolato);
+        ricetteGelato.add(caffe);
+        ricetteGelato.add(vaniglia);
     }
     
     public boolean ingredientiSufficienti(ArrayList<Ingrediente> ingredienti, ArrayList<Ingrediente> ricetta) {

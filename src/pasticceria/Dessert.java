@@ -39,6 +39,13 @@ public abstract class Dessert {
         if(numIngredient >= 6) numIngredient = 3;
     }
     
+    public int calcolaCosto(){
+        for(Ingrediente i : ingredienti){
+            costoProduzione += i.getCosto();
+        }
+        return costoProduzione;
+    }
+    
     public void vendita(){
         quantita--;
     }
