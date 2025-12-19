@@ -43,7 +43,7 @@ public class Donut extends Dessert{
         
         latte.add(new Ingrediente("latte", 0, ""));
         latte.add(new Ingrediente("farina", 0, ""));
-        latte.add(new Ingrediente("uova", 0, ""));
+        latte.add(new Ingrediente("lievito", 0, ""));
         
         ricetteDonut.add(fragola);
         ricetteDonut.add(cioccolato);
@@ -89,6 +89,8 @@ public class Donut extends Dessert{
                 case 3:
                     return "donut crema";             }
         }
+        qualita = 0;
+        fallito = true;
         return "fallimento";
     }
 }

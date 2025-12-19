@@ -4,7 +4,6 @@
  */
 package pasticceria;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -12,13 +11,14 @@ import java.util.Random;
  * @author zxt02
  */
 public class Client {
-    private int quantita, soldi;
+    private int soldi;
     Random r = new Random();
     
     public Client(){
         soldi = r.nextInt(200, 3001);
     }
     
-    public void compra(ArrayList<Dessert> d){
+    public int getSoldi(){
+        return soldi;
     }
 }

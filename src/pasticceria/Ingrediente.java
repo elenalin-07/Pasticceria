@@ -10,12 +10,32 @@ package pasticceria;
  */
 public class Ingrediente {
     private String nome, qualita;
-    private int costo;
+    private int costo, qualitaInt;
     
     public Ingrediente(String n, int c, String q){
         this.nome = n;
         this.costo = c;
         this.qualita = q;
+    }
+    
+    public boolean checkFragola(Ingrediente i){
+        if(this.getNome().equals(i.getNome())) return true;
+        return false;
+    }
+    
+    public void setQualita(){
+        if(qualita.equals("Alta")){
+            qualitaInt = 20;
+        }
+        else{
+            qualitaInt = 10;
+        }
+    }
+    
+    public void setCosto(){
+        if(qualita.equals("Alta")){
+            costo /= 2;
+        }
     }
     
     public String getNome(){
@@ -29,7 +49,8 @@ public class Ingrediente {
         return costo;
     }
     
-    public String getQualita(){
-        return qualita;
+    public int getQualita(){
+        setQualita();
+        return qualitaInt;
     }
 }

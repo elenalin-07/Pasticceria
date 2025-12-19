@@ -98,6 +98,8 @@ public class Torta extends Dessert{
                 case 4:
                     return "tiramisu";              }
         }
+        fallito = true;
+        qualita = 0;
         return "fallimento";
     }
 }

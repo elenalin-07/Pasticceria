@@ -12,29 +12,42 @@ import java.util.ArrayList;
  */
 public abstract class Dessert {
     protected ArrayList<Ingrediente> ingredienti;
-    protected int qualita, costoProduzione, prezzo, popolarita, quantita, numIngredient;
-    private boolean stato;
+    protected int qualita, costoProduzione, prezzo, quantita, numIngredient;
+    protected boolean stato, fallito;
     
     public Dessert(){
         ingredienti = new ArrayList<>();
         stato = false;
+        fallito = false;
         quantita = 20;
         numIngredient = 0;
+        costoProduzione = 0;
+        prezzo = 0;
     }
     
     public abstract String setImage();
+    
+    public void aumentaPrezzo(){
+        prezzo += prezzo * 10/100;
+    }
+    
+    public void dimnuireCosto(){
+        costoProduzione -= costoProduzione * 20/100;
+    }
     
     public void addIngrediente(Ingrediente i, int n){
         int posizione;
         numIngredient++;
         if(numIngredient <= 3){
             ingredienti.add(i);
+            qualita += i.getQualita();
         }
         else{
-            System.out.println(numIngredient + "+" + n);
             posizione = numIngredient - (n+3);
+            qualita -= ingredienti.get(posizione).getQualita();
             ingredienti.remove(posizione);
             ingredienti.add(i);
+            qualita += i.getQualita();
         }
         if(numIngredient >= 6) numIngredient = 3;
     }
@@ -46,8 +59,28 @@ public abstract class Dessert {
         return costoProduzione;
     }
     
-    public void vendita(){
-        quantita--;
+    public void diminuiQuantita(int n){
+        quantita -= n;
+    }
+    
+    public int vendita(int richiesta){
+        if(richiesta <= quantita){
+            quantita -= richiesta;
+            return richiesta;
+        } else {
+            int venduti = quantita;
+            quantita = 0;
+            return venduti;
+        }
+    }
+
+    
+    public void setQualita(){
+        qualita = 100;
+    }
+    
+    public void aumentaQualita(int q){
+        qualita += q;
     }
     
     public ArrayList<Ingrediente> getIngredienti(){
@@ -63,11 +96,13 @@ public abstract class Dessert {
     }
     
     public int getPrezzo(){
+        if(!fallito) prezzo = costoProduzione + costoProduzione * 10 / 100;
+        else prezzo = 0;
         return prezzo;
     }
     
-    public int getPopolarita(){
-        return popolarita;
+    public int getCostoProduzione(){
+        return costoProduzione;
     }
     
     public int getQuantita(){

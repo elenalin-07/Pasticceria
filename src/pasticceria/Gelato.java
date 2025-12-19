@@ -29,19 +29,19 @@ public class Gelato extends Dessert{
         vaniglia = new ArrayList<>();
         ricetteGelato = new ArrayList<>();
         
-        fragola.add(new Ingrediente("panna", 0, ""));
+        fragola.add(new Ingrediente("crema", 0, ""));
         fragola.add(new Ingrediente("latte condensato", 0, ""));
         fragola.add(new Ingrediente("fragola", 0, ""));
         
-        cioccolato.add(new Ingrediente("panna", 0, ""));
+        cioccolato.add(new Ingrediente("crema", 0, ""));
         cioccolato.add(new Ingrediente("latte condensato", 0, ""));
         cioccolato.add(new Ingrediente("cioccolato", 0, ""));
         
-        caffe.add(new Ingrediente("panna", 0, ""));
+        caffe.add(new Ingrediente("crema", 0, ""));
         caffe.add(new Ingrediente("latte condensato", 0, ""));
-        caffe.add(new Ingrediente("caffe", 0, ""));
+        caffe.add(new Ingrediente("caffè", 0, ""));
         
-        vaniglia.add(new Ingrediente("panna", 0, ""));
+        vaniglia.add(new Ingrediente("crema", 0, ""));
         vaniglia.add(new Ingrediente("latte condensato", 0, ""));
         vaniglia.add(new Ingrediente("vaniglia", 0, ""));
         
@@ -89,6 +89,8 @@ public class Gelato extends Dessert{
                 case 3:
                     return "gelato vaniglia";             }
         }
+        fallito = true;
+        qualita = 0;
         return "fallimento";
     }
 }

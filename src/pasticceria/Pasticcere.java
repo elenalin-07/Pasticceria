@@ -9,13 +9,29 @@ package pasticceria;
  * @author zxt02
  */
 public class Pasticcere {
-    private int livello = 0, puntiEsperienza = 0, maxPunti;
+    private int livello = 1, puntiEsperienza = 0, maxPunti, costo;
     private String nome;
-    private Dessert dessert;
     
-    public Pasticcere(String n, Dessert dessert){
+    public Pasticcere(String n){
         this.nome = n;
-        this.dessert = dessert;
+        costo = 100;
+    }
+    
+    public void aumentaQualita(Dessert d){
+        switch(nome){
+            case "Luca":
+                int q = livello * 15;
+                d.aumentaQualita(q);
+                break;
+            case "Mellisa":
+                d.aumentaPrezzo();
+                break;
+            case "Paolo":
+                d.dimnuireCosto();
+                break;
+        }   
+        int q = livello * 8;
+        d.aumentaQualita(q);
     }
     
     public void aumentaEsperienza(){
@@ -24,7 +40,10 @@ public class Pasticcere {
     }
     
     public void aumentaLevel(){
+        if(livello < 5){
         livello++;
+        costo = livello * 100;
+        }
     }
     
     public void checkPunti(){
@@ -33,6 +52,10 @@ public class Pasticcere {
             puntiEsperienza -= maxPunti;
             aumentaLevel();
         }
+    }
+    
+    public int getCosto(){
+        return costo;
     }
     
 }
