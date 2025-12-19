@@ -22,7 +22,7 @@ import javax.swing.UIManager;
 public class Form1 extends javax.swing.JFrame{
     private Dessert[] d, v;
     private ImageIcon[] images;
-    private int numProdotto, costo, clic, numDessert, mese, numStand, t, quantita, rimborso, c;
+    private int numProdotto, costo, clic, numDessert, mese, numStand, t, quantita, rimborso, c, S1nR, S2nR, S3nR, R4nS;
     private String tipo, qualita, ingredient, nome;
     private Dessert dessert, dessertSelezionato;
     private Negozio negozio;
@@ -268,9 +268,39 @@ public class Form1 extends javax.swing.JFrame{
     
     public void aggiornaLabels(){
         lblSoldi.setText(String.valueOf(negozio.getSoldi()));
-        if(v[0] != null) lblQuantitaS1.setText(String.valueOf(v[0].getQuantita()));
-        if(v[1] != null) lblQuantitaS2.setText(String.valueOf(v[1].getQuantita()));
-        if(v[2] != null) lblQuantitaS3.setText(String.valueOf(v[2].getQuantita()));
+        switch(S1nR){
+            case 0:
+              if(v[0] != null)lblQuantitaS1.setText(String.valueOf(v[0].getQuantita()));
+              break;
+            case 1:
+              if(v[1] != null)lblQuantitaS1.setText(String.valueOf(v[1].getQuantita()));
+              break;
+            case 2:
+              if(v[2] != null)lblQuantitaS1.setText(String.valueOf(v[2].getQuantita()));
+              break;
+        }
+        switch(S2nR){
+            case 0:
+              if(v[0] != null)lblQuantitaS2.setText(String.valueOf(v[0].getQuantita()));
+              break;
+            case 1:
+              if(v[1] != null)lblQuantitaS2.setText(String.valueOf(v[1].getQuantita()));
+              break;
+            case 2:
+              if(v[2] != null)lblQuantitaS2.setText(String.valueOf(v[2].getQuantita()));
+              break;
+        }
+        switch(S3nR){
+            case 0:
+              if(v[0] != null)lblQuantitaS3.setText(String.valueOf(v[0].getQuantita()));
+              break;
+            case 1:
+              if(v[1] != null)lblQuantitaS3.setText(String.valueOf(v[1].getQuantita()));
+              break;
+            case 2:
+              if(v[2] != null)lblQuantitaS3.setText(String.valueOf(v[2].getQuantita()));
+              break;
+        }
     }
     
     public void timer(int c){
@@ -312,6 +342,9 @@ public class Form1 extends javax.swing.JFrame{
                 if(t == c){
                     mese++;
                     System.out.println("\nMese; " + mese);
+                    System.out.println("affitto: " + 2000);
+                    negozio.affitto();
+                    lblSoldi.setText(String.valueOf(negozio.getSoldi()));
                     eventiCasuali();
                     lblMese.setText(String.valueOf(mese));
 
@@ -2027,7 +2060,20 @@ public class Form1 extends javax.swing.JFrame{
             v[numStand] = d[0];
             negozio.addVendita(d[0]);
             numStand++;
-            setStand1(d[0], images[0]);
+            switch(numStand){
+                case 1:
+                    setStand1(d[0], images[0]);
+                    S1nR = 0;
+                    break;
+                case 2:
+                    setStand2(d[0], images[0]);
+                    S2nR = 0;
+                    break;
+                case 3:
+                    setStand3(d[0], images[0]);
+                    S3nR = 0;
+                    break;
+            }
         }
     }//GEN-LAST:event_btnAggiungiR1ActionPerformed
 
@@ -2037,7 +2083,20 @@ public class Form1 extends javax.swing.JFrame{
             v[numStand] = d[1];
             negozio.addVendita(d[1]);
             numStand++;
-            setStand2(d[1], images[1]);
+            switch(numStand){
+                case 1:
+                    setStand1(d[1], images[1]);
+                    S1nR = 1;
+                    break;
+                case 2:
+                    setStand2(d[1], images[1]);
+                    S2nR = 1;
+                    break;
+                case 3:
+                    setStand3(d[1], images[1]);
+                    S3nR = 1;
+                    break;
+            }
         }
     }//GEN-LAST:event_btnAggiungiR2ActionPerformed
 
@@ -2047,7 +2106,20 @@ public class Form1 extends javax.swing.JFrame{
             v[numStand] = d[2];
             negozio.addVendita(d[2]);
             numStand++;
-            setStand3(d[2], images[2]);
+            switch(numStand){
+                case 1:
+                    setStand1(d[2], images[2]);
+                    S1nR = 2;
+                    break;
+                case 2:
+                    setStand2(d[2], images[2]);
+                    S2nR = 2;
+                    break;
+                case 3:
+                    setStand3(d[2], images[2]);
+                    S3nR = 2;
+                    break;
+            }
         }
     }//GEN-LAST:event_btnAggiungiR3ActionPerformed
 
@@ -2057,6 +2129,20 @@ public class Form1 extends javax.swing.JFrame{
             v[numStand] = d[3];
             negozio.addVendita(d[3]);
             numStand++;
+            switch(numStand){
+                case 1:
+                    setStand1(d[3], images[3]);
+                    S1nR = 3;
+                    break;
+                case 2:
+                    setStand2(d[3], images[3]);
+                    S2nR = 3;
+                    break;
+                case 3:
+                    setStand3(d[3], images[3]);
+                    S3nR = 3;
+                    break;
+            }
         }
     }//GEN-LAST:event_btnAggiungiR4ActionPerformed
 

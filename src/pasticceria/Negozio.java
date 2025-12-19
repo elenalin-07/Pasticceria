@@ -27,6 +27,9 @@ public class Negozio {
         vendite = new ArrayList<>();
     }
     
+    public void affitto(){
+        soldi -= 2000;
+    }
     public void addDessert(Dessert d){
         soldi -= 80;
         desserts.add(d);
