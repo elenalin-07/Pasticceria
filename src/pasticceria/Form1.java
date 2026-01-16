@@ -29,7 +29,7 @@ public class Form1 extends javax.swing.JFrame{
     private Pasticcere pasticcereLuca;
     private Pasticcere pasticcereMellisa;
     private Pasticcere pasticcerePaolo;
-    private boolean checkIng, checkPast, timerStarted;
+    private boolean checkIng, checkPast, timerStarted, checkStart;
     private Timer timer;
     private HashMap<String, Object> m;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Form1.class.getName());
@@ -303,9 +303,9 @@ public class Form1 extends javax.swing.JFrame{
         }
     }
     
-    public void timer(int c){
+    public void timer(int c){  
         t = 0;
-        eventiCasuali();
+        if(mese != 1) eventiCasuali();
         timer = new Timer(5000, new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 timerStarted = true;
@@ -394,6 +394,7 @@ public class Form1 extends javax.swing.JFrame{
         timerStarted = false;
         checkIng = false;
         checkPast = false;
+        checkStart = false;
         
         btnCreare.setEnabled(false);
         tipo = cmbTipo.getSelectedItem().toString();
@@ -430,7 +431,6 @@ public class Form1 extends javax.swing.JFrame{
         ingredients.put("vaniglia", 150);
         ingredients.put("caffè", 160);
         
-        timer(6);
     }
 
     /**
@@ -1856,6 +1856,10 @@ public class Form1 extends javax.swing.JFrame{
     }//GEN-LAST:event_btnAggiungiActionPerformed
 
     private void btnCreareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreareActionPerformed
+        if(!checkStart){
+            timer(6);
+            checkStart = true;
+        }
         negozio.diminuiSoldi(c);
         numProdotto = 0;
         int pos = 1;
